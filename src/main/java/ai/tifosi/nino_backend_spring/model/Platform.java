@@ -22,23 +22,21 @@ public class Platform {
         this.frequency = frequency;
     }
 
-    public long getID(){
-        return id;
-    }
+    public Long getId() {return id;}
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getFrequency(){
-        return frequency;
-    }
-
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setFrequency(int frequency){
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
 

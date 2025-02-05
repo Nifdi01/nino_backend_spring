@@ -22,16 +22,22 @@ public class Keyword {
         this.frequency = frequency;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getFrequency() {
         return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
     @Override

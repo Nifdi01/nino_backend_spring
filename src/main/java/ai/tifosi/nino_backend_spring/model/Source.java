@@ -31,40 +31,38 @@ public class Source {
         this.activity = activity;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
-    public String getLink(){
+    public String getLink() {
         return link;
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public int getActivity(){
-        return activity;
-    }
-
-    public Platform getPlatform(){
-        return platform;
-    }
-
-    public void setLink(String link){
+    public void setLink(String link) {
         this.link = link;
     }
 
-    public void setName(String name){
+    public Platform getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(Platform platform) {
+        this.platform = platform;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setActivity(int activity){
-        this.activity = activity;
+    public int getActivity() {
+        return activity;
     }
 
-    public void setPlatform(Platform platform){
-        this.platform = platform;
+    public void setActivity(int activity) {
+        this.activity = activity;
     }
 
     @Override
