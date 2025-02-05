@@ -1,7 +1,5 @@
 package ai.tifosi.nino_backend_spring.model;
 
-import ai.tifosi.nino_backend_spring.model.Keyword;
-import ai.tifosi.nino_backend_spring.model.Source;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
