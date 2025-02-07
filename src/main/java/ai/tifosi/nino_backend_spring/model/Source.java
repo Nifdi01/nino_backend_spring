@@ -12,7 +12,7 @@ public class Source {
     @Column(unique = true, nullable=false)
     private String link;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "platform_id", nullable = false)
     private Platform platform;
 

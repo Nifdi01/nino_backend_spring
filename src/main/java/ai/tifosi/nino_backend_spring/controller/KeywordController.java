@@ -3,7 +3,8 @@ package ai.tifosi.nino_backend_spring.controller;
 import ai.tifosi.nino_backend_spring.model.Keyword;
 import ai.tifosi.nino_backend_spring.repository.KeywordRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,7 +22,6 @@ public class KeywordController {
     @GetMapping
     public ResponseEntity<List<Keyword>> getAllKeywords() {
         List<Keyword> keywords = keywordRepository.findAll();
-        System.out.println("Fetched keywords: " + keywords);  // Debugging line
         return ResponseEntity.ok(keywords);
     }
 }
