@@ -1,4 +1,4 @@
-package ai.tifosi.nino_backend_spring.model;
+package ai.tifosi.nino_backend_spring.model.news;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name="news_news")
+@Table(name = "news_news")
 public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,24 +22,24 @@ public class News {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "source_id", nullable = false)
     private Source source;
 
     @ManyToMany
     @JoinTable(
             name = "news_news_keywords",
-            joinColumns = @JoinColumn(name="news_id"),
+            joinColumns = @JoinColumn(name = "news_id"),
             inverseJoinColumns = @JoinColumn(name = "keywords_id")
     )
     private Set<Keyword> keywords;
 
-    @Column(name="published_at", updatable = false)
+    @Column(name = "published_at", updatable = false)
     @CreationTimestamp
     private LocalDateTime publishedAt;
 
     @Column(nullable = false)
-    private int viewed=0;
+    private int viewed = 0;
 
     public News() {
     }
@@ -50,6 +50,10 @@ public class News {
         this.content = content;
         this.source = source;
         this.keywords = keywords;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {

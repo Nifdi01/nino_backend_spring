@@ -1,4 +1,4 @@
-package ai.tifosi.nino_backend_spring.model;
+package ai.tifosi.nino_backend_spring.model.news;
 
 import jakarta.persistence.*;
 
@@ -9,10 +9,10 @@ public class Source {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable=false)
+    @Column(unique = true, nullable = false)
     private String link;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "platform_id", nullable = false)
     private Platform platform;
 
@@ -20,9 +20,10 @@ public class Source {
     private String name;
 
     @Column(nullable = false)
-    private int activity=0;
+    private int activity = 0;
 
-    public Source() {}
+    public Source() {
+    }
 
     public Source(String link, Platform platform, String name, int activity) {
         this.link = link;
@@ -31,7 +32,9 @@ public class Source {
         this.activity = activity;
     }
 
-    public Long getId() {return id;}
+    public Long getId() {
+        return id;
+    }
 
     public String getLink() {
         return link;

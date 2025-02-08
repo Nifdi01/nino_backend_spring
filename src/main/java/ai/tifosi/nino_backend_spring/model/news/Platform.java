@@ -1,10 +1,10 @@
-package ai.tifosi.nino_backend_spring.model;
+package ai.tifosi.nino_backend_spring.model.news;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="news_keywords")
-public class Keyword {
+@Table(name = "news_platforms")
+public class Platform {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,14 +15,17 @@ public class Keyword {
     @Column(nullable = false)
     private int frequency = 0;
 
-    public Keyword() {}
+    public Platform() {
+    }
 
-    public Keyword(String name, int frequency) {
+    public Platform(String name, int frequency) {
         this.name = name;
         this.frequency = frequency;
     }
 
-    public Long getId() {return id;}
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
