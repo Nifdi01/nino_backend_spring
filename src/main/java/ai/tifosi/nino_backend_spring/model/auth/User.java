@@ -39,7 +39,7 @@ public class User {
 
     @Size(max = 254)
     @NotNull
-    @Column(name = "email", nullable = false, length = 254)
+    @Column(name = "email", unique = true, nullable = false, length = 254)
     private String email;
 
     @NotNull
