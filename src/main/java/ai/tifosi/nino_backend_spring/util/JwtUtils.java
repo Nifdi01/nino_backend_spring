@@ -18,6 +18,7 @@ public class JwtUtils {
     @Value("${jwt.refreshExpirationMs}")
     private Long refreshExpirationMs;
 
+
     public String generateAccessToken(String username, String role) {
         return Jwts.builder()
                 .setSubject(username)

@@ -9,8 +9,4 @@ import java.util.Optional;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, String> {
     Optional<Company> findByName(String name);
-
-    default Company findByNameOrNull(String name) {
-        return findByName(name).orElse(null);
-    }
 }
