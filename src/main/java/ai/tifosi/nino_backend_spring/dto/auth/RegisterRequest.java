@@ -28,7 +28,7 @@ public class RegisterRequest {
         return email;
     }
 
-    public void setEmail(String username) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -44,7 +44,7 @@ public class RegisterRequest {
         return firsName;
     }
 
-    public void setFirsName(String firsName) {
+    public void setFirstName(String firsName) {
         this.firsName = firsName;
     }
 
