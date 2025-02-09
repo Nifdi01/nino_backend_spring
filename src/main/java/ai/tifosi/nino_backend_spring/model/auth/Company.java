@@ -1,4 +1,4 @@
-package ai.tifosi.nino_backend_spring.model.user;
+package ai.tifosi.nino_backend_spring.model.auth;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "user_management_company")
+@Table(name = "companies")
 public class Company {
     @Id
     @Size(max = 100)

@@ -3,7 +3,7 @@ package ai.tifosi.nino_backend_spring.model.news;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "news_keywords")
+@Table(name = "keywords")
 public class Keyword {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

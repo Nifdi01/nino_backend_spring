@@ -1,4 +1,4 @@
-package ai.tifosi.nino_backend_spring.model.user;
+package ai.tifosi.nino_backend_spring.model.auth;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "user_management_user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,6 @@ public class User {
 
     @Column(name = "last_login")
     private OffsetDateTime lastLogin;
-
-    @NotNull
-    @Column(name = "is_superuser", nullable = false)
-    private Boolean isSuperuser = false;
 
     @Size(max = 150)
     @NotNull
@@ -47,14 +43,6 @@ public class User {
     private String email;
 
     @NotNull
-    @Column(name = "is_staff", nullable = false)
-    private Boolean isStaff = false;
-
-    @NotNull
-    @Column(name = "is_active", nullable = false)
-    private Boolean isActive = false;
-
-    @NotNull
     @Column(name = "date_joined", nullable = false)
     private OffsetDateTime dateJoined;
 
@@ -63,13 +51,6 @@ public class User {
     @Column(name = "role", nullable = false, length = 20)
     private String role;
 
-    @NotNull
-    @Column(name = "created_at", nullable = false)
-    private OffsetDateTime createdAt;
-
-    @NotNull
-    @Column(name = "updated_at", nullable = false)
-    private OffsetDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
@@ -77,10 +58,6 @@ public class User {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPassword() {
@@ -97,14 +74,6 @@ public class User {
 
     public void setLastLogin(OffsetDateTime lastLogin) {
         this.lastLogin = lastLogin;
-    }
-
-    public Boolean getIsSuperuser() {
-        return isSuperuser;
-    }
-
-    public void setIsSuperuser(Boolean isSuperuser) {
-        this.isSuperuser = isSuperuser;
     }
 
     public String getUsername() {
@@ -139,22 +108,6 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getIsStaff() {
-        return isStaff;
-    }
-
-    public void setIsStaff(Boolean isStaff) {
-        this.isStaff = isStaff;
-    }
-
-    public Boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Boolean isActive) {
-        this.isActive = isActive;
-    }
-
     public OffsetDateTime getDateJoined() {
         return dateJoined;
     }
@@ -171,22 +124,6 @@ public class User {
         this.role = role;
     }
 
-    public OffsetDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public OffsetDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public Company getCompany() {
         return company;
     }
@@ -194,5 +131,4 @@ public class User {
     public void setCompany(Company company) {
         this.company = company;
     }
-
 }

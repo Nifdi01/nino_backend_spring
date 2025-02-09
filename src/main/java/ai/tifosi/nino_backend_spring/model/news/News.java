@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "news_news")
+@Table(name = "news")
 public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class News {
 
     @ManyToMany
     @JoinTable(
-            name = "news_news_keywords",
+            name = "news_keywords",
             joinColumns = @JoinColumn(name = "news_id"),
             inverseJoinColumns = @JoinColumn(name = "keywords_id")
     )
