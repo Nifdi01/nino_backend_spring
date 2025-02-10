@@ -39,4 +39,13 @@ public class LoginRequest {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    @Override
+    public String toString() {
+        return "LoginRequest{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }

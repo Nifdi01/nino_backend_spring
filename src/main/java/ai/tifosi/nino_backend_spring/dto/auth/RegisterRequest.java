@@ -14,7 +14,7 @@ public class RegisterRequest {
 
     @NotBlank
     @Size(max = 150)
-    private String firsName;
+    private String firstName;
 
     @NotBlank
     @Size(max = 150)
@@ -41,11 +41,11 @@ public class RegisterRequest {
     }
 
     public String getFirstName() {
-        return firsName;
+        return firstName;
     }
 
     public void setFirstName(String firsName) {
-        this.firsName = firsName;
+        this.firstName = firsName;
     }
 
     public String getLastName() {
@@ -62,5 +62,16 @@ public class RegisterRequest {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisterRequest{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
     }
 }
