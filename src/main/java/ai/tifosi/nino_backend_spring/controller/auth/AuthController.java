@@ -30,6 +30,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
+        System.out.println("REQUEST BODY: " + " " + registerRequest);
         try {
             User newUser = userService.registerUser(registerRequest);
             return ResponseEntity.status(HttpStatus.CREATED)
@@ -47,6 +48,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest loginRequest) {
+        System.out.println("REQUEST BODY: " + " " + loginRequest);
         try {
             User user = userService.loginUser(loginRequest);
 
@@ -54,6 +56,9 @@ public class AuthController {
             String refreshToken = jwtUtils.generateRefreshToken(user.getUsername());
 
             String fullName = user.getFirstName() + " " + user.getLastName();
+
+            System.out.println("ACCESS: " + accessToken);
+            System.out.println("REFRESH: " + refreshToken);
 
             return ResponseEntity.ok(Map.of(
                     "message", "User Logged in successfully",
