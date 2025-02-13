@@ -1,3 +1,5 @@
+package ai.tifosi.nino_backend_spring.util;
+
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import java.util.Base64;
