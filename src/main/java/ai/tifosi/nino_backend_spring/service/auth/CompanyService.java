@@ -2,20 +2,17 @@ package ai.tifosi.nino_backend_spring.service.auth;
 
 import ai.tifosi.nino_backend_spring.model.auth.Company;
 import ai.tifosi.nino_backend_spring.repository.auth.CompanyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CompanyService {
     private final CompanyRepository companyRepository;
 
-    public CompanyService(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
+    public Company createCompany(String name) {
+        Company company = new Company(name);
 
-    @Transactional
-    public Company findByNameOrCreate(String name) {
-        return companyRepository.findByName(name)
-                .orElseGet(() -> companyRepository.save(new Company(name)));
+        return companyRepository.save(company);
     }
 }
