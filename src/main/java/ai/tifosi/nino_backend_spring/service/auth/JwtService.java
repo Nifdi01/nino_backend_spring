@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,11 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final String SECRET_KEY = "znndqjSw4IsSFhxEuC+siX1JugG/KEuZz/Pf2IdDobL41a4vGHZIc2aE0249uqUGPe46IDfBGZUhojAOyPYWbg==";
+    @Value("${security.jwt.secret-key}")
+    private String SECRET_KEY;
+
+    @Value("${spring.security.jwt.expiration-time}")
+    private long EXPIRATION_DATE;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -37,7 +42,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_DATE * 24 * 14))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS512)
                 .compact();
     }

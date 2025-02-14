@@ -59,5 +59,5 @@ public class NewsDto implements Serializable {
     public int getViewed() {
         return viewed;
     }
-    
+
 }

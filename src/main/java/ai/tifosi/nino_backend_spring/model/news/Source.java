@@ -35,5 +35,5 @@ public class Source {
         this.name = name;
         this.activity = activity;
     }
-    
+
 }

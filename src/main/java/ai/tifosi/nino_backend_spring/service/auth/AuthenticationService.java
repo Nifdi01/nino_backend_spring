@@ -3,6 +3,7 @@ package ai.tifosi.nino_backend_spring.service.auth;
 import ai.tifosi.nino_backend_spring.Enums.Role;
 import ai.tifosi.nino_backend_spring.dto.auth.AuthenticationRequest;
 import ai.tifosi.nino_backend_spring.dto.auth.AuthenticationResponse;
+import ai.tifosi.nino_backend_spring.dto.auth.CompanyDto;
 import ai.tifosi.nino_backend_spring.dto.auth.RegisterRequest;
 import ai.tifosi.nino_backend_spring.model.auth.Company;
 import ai.tifosi.nino_backend_spring.model.auth.User;
@@ -29,9 +30,10 @@ public class AuthenticationService {
 
     @Transactional
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = new User();
-        user.setFirstname(request.getFirstname());
-        user.setLastname(request.getLastname());
+        System.out.println(request);
+        User user = new User();
+        user.setFirstname(request.getFirstName());
+        user.setLastname(request.getLastName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.USER);
@@ -60,11 +62,16 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = userRepository.findByEmail(request.getEmail())
+        var user = userRepository.findByEmailWithCompany(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         AuthenticationResponse response = new AuthenticationResponse();
         response.setToken(jwtToken);
+        response.setFirstName(user.getFirstname());
+        response.setLastName(user.getLastname());
+        response.setRole(user.getRole());
+        response.setCompany(new CompanyDto(user.getCompany()));
+        response.setEmail(user.getEmail());
 
         return response;
     }
