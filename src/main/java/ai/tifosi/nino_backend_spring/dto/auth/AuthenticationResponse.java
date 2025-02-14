@@ -12,7 +12,8 @@ public class AuthenticationResponse {
     private String lastName;
     private String email;
     private Role role;
-    private CompanyDto company;
+    private String company;
+
 
     @Override
     public String toString() {
@@ -22,7 +23,7 @@ public class AuthenticationResponse {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
-                ", company=" + company.getName() +
+                ", company=" + company +
                 '}';
     }
 }
