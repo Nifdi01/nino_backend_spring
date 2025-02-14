@@ -2,8 +2,10 @@ package ai.tifosi.nino_backend_spring.model.news;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "keywords")
 public class Keyword {
@@ -22,14 +24,6 @@ public class Keyword {
 
     public Keyword(String name, int frequency) {
         this.name = name;
-        this.frequency = frequency;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
 

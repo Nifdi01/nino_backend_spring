@@ -1,7 +1,11 @@
 package ai.tifosi.nino_backend_spring.model.news;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "platforms")
 public class Platform {
@@ -20,26 +24,6 @@ public class Platform {
 
     public Platform(String name, int frequency) {
         this.name = name;
-        this.frequency = frequency;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
 

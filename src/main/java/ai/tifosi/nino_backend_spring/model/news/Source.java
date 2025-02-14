@@ -1,7 +1,11 @@
 package ai.tifosi.nino_backend_spring.model.news;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "sources")
 public class Source {
@@ -31,45 +35,5 @@ public class Source {
         this.name = name;
         this.activity = activity;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public Platform getPlatform() {
-        return platform;
-    }
-
-    public void setPlatform(Platform platform) {
-        this.platform = platform;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getActivity() {
-        return activity;
-    }
-
-    public void setActivity(int activity) {
-        this.activity = activity;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
+    
 }
