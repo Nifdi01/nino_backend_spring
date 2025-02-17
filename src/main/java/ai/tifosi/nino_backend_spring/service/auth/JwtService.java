@@ -61,7 +61,6 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        System.out.println("Where Here");
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())

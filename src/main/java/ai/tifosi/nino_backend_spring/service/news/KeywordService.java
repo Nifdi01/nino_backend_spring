@@ -15,7 +15,7 @@ public class KeywordService {
         this.keywordRepository = keywordRepository;
     }
 
-    public Page<KeywordDto> getKeywords(String search, Pageable pageable) {
+    public Page<KeywordDto> getAllKeywords(String search, Pageable pageable) {
         // Apply the search query and pagination parameters
         Page<Keyword> keywords = keywordRepository.findByNameContaining(search, pageable);
 

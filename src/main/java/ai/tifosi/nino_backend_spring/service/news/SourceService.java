@@ -1,13 +1,12 @@
 package ai.tifosi.nino_backend_spring.service.news;
 
+import ai.tifosi.nino_backend_spring.dto.news.PlatformDto;
 import ai.tifosi.nino_backend_spring.dto.news.SourceDto;
-import ai.tifosi.nino_backend_spring.mapper.SourceMapper;
 import ai.tifosi.nino_backend_spring.model.news.Source;
 import ai.tifosi.nino_backend_spring.repository.news.SourceRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SourceService {
@@ -17,8 +16,19 @@ public class SourceService {
         this.sourceRepository = sourceRepository;
     }
 
-    public List<SourceDto> getAllSources() {
-        List<Source> sources = sourceRepository.findAll();
-        return sources.stream().map(SourceMapper::toDto).collect(Collectors.toList());
+    public Page<SourceDto> getAllSources(String search, Pageable pageable) {
+        Page<Source> sources = sourceRepository.findByNameContaining(search, pageable);
+
+        return sources.map(this::convertToDto);
+    }
+
+    private SourceDto convertToDto(Source source) {
+        return new SourceDto(
+                source.getId(),
+                source.getLink(),
+                new PlatformDto(source.getPlatform().getId(), source.getPlatform().getName(), source.getPlatform().getFrequency()),
+                source.getName(),
+                source.getActivity()
+        );
     }
 }

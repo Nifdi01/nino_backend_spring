@@ -30,7 +30,7 @@ public class KeywordController {
         Pageable pageable = PageRequest.of(page - 1, pageSize);
 
         // Fetch the paginated results
-        Page<KeywordDto> keywordPage = keywordService.getKeywords(search, pageable);
+        Page<KeywordDto> keywordPage = keywordService.getAllKeywords(search, pageable);
 
         // Return paginated results
         return ResponseEntity.ok(keywordPage);
