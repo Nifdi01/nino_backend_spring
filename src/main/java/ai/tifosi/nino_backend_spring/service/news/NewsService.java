@@ -1,6 +1,6 @@
 package ai.tifosi.nino_backend_spring.service.news;
 
-import ai.tifosi.nino_backend_spring.dto.news.NewsDto;
+import ai.tifosi.nino_backend_spring.dto.news.newsDto.NewsDto;
 import ai.tifosi.nino_backend_spring.mapper.NewsMapper;
 import ai.tifosi.nino_backend_spring.model.news.News;
 import ai.tifosi.nino_backend_spring.repository.news.NewsRepository;

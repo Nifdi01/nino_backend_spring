@@ -1,6 +1,6 @@
 package ai.tifosi.nino_backend_spring.controller.news;
 
-import ai.tifosi.nino_backend_spring.dto.news.PlatformDto;
+import ai.tifosi.nino_backend_spring.dto.news.platformDto.PlatformDto;
 import ai.tifosi.nino_backend_spring.service.news.PlatformService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

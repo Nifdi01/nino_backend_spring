@@ -1,7 +1,7 @@
 package ai.tifosi.nino_backend_spring.service.news;
 
-import ai.tifosi.nino_backend_spring.dto.news.PlatformDto;
-import ai.tifosi.nino_backend_spring.dto.news.SourceDto;
+import ai.tifosi.nino_backend_spring.dto.news.platformDto.PlatformDto;
+import ai.tifosi.nino_backend_spring.dto.news.sourceDto.SourceDto;
 import ai.tifosi.nino_backend_spring.model.news.Source;
 import ai.tifosi.nino_backend_spring.repository.news.SourceRepository;
 import org.springframework.data.domain.Page;

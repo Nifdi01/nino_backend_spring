@@ -1,6 +1,6 @@
 package ai.tifosi.nino_backend_spring.controller.news;
 
-import ai.tifosi.nino_backend_spring.dto.news.SourceDto;
+import ai.tifosi.nino_backend_spring.dto.news.sourceDto.SourceDto;
 import ai.tifosi.nino_backend_spring.service.news.SourceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

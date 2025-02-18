@@ -1,6 +1,6 @@
 package ai.tifosi.nino_backend_spring.mapper;
 
-import ai.tifosi.nino_backend_spring.dto.news.SourceDto;
+import ai.tifosi.nino_backend_spring.dto.news.sourceDto.SourceDto;
 import ai.tifosi.nino_backend_spring.model.news.Source;
 
 public class SourceMapper {
