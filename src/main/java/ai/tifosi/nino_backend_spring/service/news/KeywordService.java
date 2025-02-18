@@ -1,8 +1,10 @@
 package ai.tifosi.nino_backend_spring.service.news;
 
-import ai.tifosi.nino_backend_spring.dto.news.KeywordDto;
+import ai.tifosi.nino_backend_spring.dto.news.keywordDto.GetKeywordDto;
+import ai.tifosi.nino_backend_spring.dto.news.keywordDto.PostKeywordDto;
 import ai.tifosi.nino_backend_spring.model.news.Keyword;
 import ai.tifosi.nino_backend_spring.repository.news.KeywordRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,7 @@ public class KeywordService {
         this.keywordRepository = keywordRepository;
     }
 
-    public Page<KeywordDto> getAllKeywords(String search, Pageable pageable) {
+    public Page<GetKeywordDto> getAllKeywords(String search, Pageable pageable) {
         // Apply the search query and pagination parameters
         Page<Keyword> keywords = keywordRepository.findByNameContaining(search, pageable);
 
@@ -23,10 +25,22 @@ public class KeywordService {
         return keywords.map(this::convertToDto);
     }
 
-    private KeywordDto convertToDto(Keyword keyword) {
-        return new KeywordDto(
+    private GetKeywordDto convertToDto(Keyword keyword) {
+        return new GetKeywordDto(
                 keyword.getId(),
                 keyword.getName(),
                 keyword.getFrequency());
+    }
+
+    public void deleteKeyword(Long id) {
+        Keyword keyword = keywordRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Keyword not found"));
+
+        keywordRepository.delete(keyword);
+    }
+
+    public void createKeyword(PostKeywordDto request) {
+        Keyword keyword = new Keyword(request.name());
+        keywordRepository.save(keyword);
     }
 }

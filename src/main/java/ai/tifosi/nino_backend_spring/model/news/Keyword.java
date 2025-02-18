@@ -22,9 +22,8 @@ public class Keyword {
     public Keyword() {
     }
 
-    public Keyword(String name, int frequency) {
+    public Keyword(String name) {
         this.name = name;
-        this.frequency = frequency;
     }
 
     @Override
