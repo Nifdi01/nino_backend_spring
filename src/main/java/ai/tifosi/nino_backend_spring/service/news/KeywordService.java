@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class KeywordService {
     private final KeywordRepository keywordRepository;
@@ -40,6 +42,12 @@ public class KeywordService {
     }
 
     public void createKeyword(PostKeywordDto request) {
+        Optional<Keyword> existingKeyword = keywordRepository.findByName(request.name());
+
+        if (existingKeyword.isPresent()) {
+            throw new IllegalArgumentException("Keyword already exists: " + request.name());
+        }
+
         Keyword keyword = new Keyword(request.name());
         keywordRepository.save(keyword);
     }

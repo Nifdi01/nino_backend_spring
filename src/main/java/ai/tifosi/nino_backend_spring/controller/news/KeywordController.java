@@ -42,11 +42,12 @@ public class KeywordController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createKeyword(
-            @RequestBody PostKeywordDto request
-    ) {
-        keywordService.createKeyword(request);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body("Keyword Created successfully");
+    public ResponseEntity<String> createKeyword(@RequestBody PostKeywordDto request) {
+        try {
+            keywordService.createKeyword(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Keyword Created successfully");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 }
