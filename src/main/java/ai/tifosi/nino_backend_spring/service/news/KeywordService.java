@@ -41,7 +41,7 @@ public class KeywordService {
         keywordRepository.delete(keyword);
     }
 
-    public void createKeyword(PostKeywordDto request) {
+    public Keyword createKeyword(PostKeywordDto request) {
         Optional<Keyword> existingKeyword = keywordRepository.findByName(request.name());
 
         if (existingKeyword.isPresent()) {
@@ -50,5 +50,6 @@ public class KeywordService {
 
         Keyword keyword = new Keyword(request.name());
         keywordRepository.save(keyword);
+        return keyword;
     }
 }

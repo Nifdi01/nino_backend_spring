@@ -2,6 +2,7 @@ package ai.tifosi.nino_backend_spring.controller.news;
 
 import ai.tifosi.nino_backend_spring.dto.news.keywordDto.GetKeywordDto;
 import ai.tifosi.nino_backend_spring.dto.news.keywordDto.PostKeywordDto;
+import ai.tifosi.nino_backend_spring.model.news.Keyword;
 import ai.tifosi.nino_backend_spring.service.news.KeywordService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,12 +43,12 @@ public class KeywordController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createKeyword(@RequestBody PostKeywordDto request) {
+    public ResponseEntity<Keyword> createKeyword(@RequestBody PostKeywordDto request) {
         try {
-            keywordService.createKeyword(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Keyword Created successfully");
+            Keyword keyword = keywordService.createKeyword(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(keyword); // Return the keyword object
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // Handle the exception
         }
     }
 }
