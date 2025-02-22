@@ -5,7 +5,7 @@ import ai.tifosi.nino_backend_spring.dto.news.sourceDto.GetSourceDto;
 import ai.tifosi.nino_backend_spring.dto.news.sourceDto.PostSourceDto;
 import ai.tifosi.nino_backend_spring.model.news.Platform;
 import ai.tifosi.nino_backend_spring.model.news.Source;
-import ai.tifosi.nino_backend_spring.repository.news.PlatformRepository;
+    import ai.tifosi.nino_backend_spring.repository.news.PlatformRepository;
 import ai.tifosi.nino_backend_spring.repository.news.SourceRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
@@ -41,6 +41,7 @@ public class SourceService {
     }
 
     public void deleteSource(Long id) {
+        System.out.println(id);
         Source source = sourceRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Source not found"));
         sourceRepository.delete(source);
@@ -59,7 +60,7 @@ public class SourceService {
         source.setName(request.name());
 
         // Fetch the existing Platform using its id from the request
-        Platform platform = platformRepository.findById(request.platform().id())
+        Platform platform = platformRepository.findById(request.platform())
                 .orElseThrow(() -> new EntityNotFoundException("Platform not found"));
         source.setPlatform(platform);
 
