@@ -1,6 +1,9 @@
 package ai.tifosi.nino_backend_spring.controller.news;
 
+import ai.tifosi.nino_backend_spring.dto.statistics.KeywordStatistics;
+import ai.tifosi.nino_backend_spring.dto.statistics.NewsStatistics;
 import ai.tifosi.nino_backend_spring.dto.statistics.OverviewStatistics;
+import ai.tifosi.nino_backend_spring.dto.statistics.SourceStatistics;
 import ai.tifosi.nino_backend_spring.service.news.StatisticsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,4 +23,20 @@ public class StatisticsController {
     public ResponseEntity<OverviewStatistics> GetOverviewStatistics(){
         return ResponseEntity.ok(statisticsService.getOverviewStatistics());
     }
+
+    @GetMapping("/sources")
+    public ResponseEntity<SourceStatistics> getSourceStatistics(){
+        return ResponseEntity.ok(statisticsService.getSourceStatistics());
+    }
+
+    @GetMapping("/news")
+    public ResponseEntity<NewsStatistics> getNewsStatistics(){
+        return ResponseEntity.ok(statisticsService.getNewsStatistics());
+    }
+
+    @GetMapping("/keywords")
+    public ResponseEntity<KeywordStatistics> getKeywordStatistics(){
+        return ResponseEntity.ok(statisticsService.getKeywordStatistics());
+    }
+
 }
