@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -19,15 +22,13 @@ public class Keyword {
     @Column(nullable = false)
     private int frequency = 0;
 
+    @ManyToMany(mappedBy = "keywords")
+    private Set<News> news = new HashSet<>();
+
     public Keyword() {
     }
 
     public Keyword(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -34,9 +35,12 @@ public class KeywordService {
                 keyword.getFrequency());
     }
 
+    @Transactional
     public void deleteKeyword(Long id) {
         Keyword keyword = keywordRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Keyword not found"));
+
+        keywordRepository.deleteKeywordRelationships(id);
 
         keywordRepository.delete(keyword);
     }
