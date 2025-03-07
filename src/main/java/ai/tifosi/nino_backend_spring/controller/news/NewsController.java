@@ -21,7 +21,6 @@ public class NewsController {
 
     @PostMapping
     public ResponseEntity<Map<String, Object>> getAllNews(@RequestBody NewsRequest request){
-        System.out.println(request);
         int page = request.page() - 1;
         int pageSize = request.pageSize();
 
