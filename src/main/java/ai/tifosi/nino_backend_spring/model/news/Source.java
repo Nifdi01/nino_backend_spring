@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -24,16 +27,11 @@ public class Source {
     private String name;
 
     @Column(nullable = false)
-    private int activity = 0;
+    private int frequency = 0;
+
+    @OneToMany(mappedBy = "source", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<News> newsList = new ArrayList<>();
 
     public Source() {
     }
-
-    public Source(String link, Platform platform, String name, int activity) {
-        this.link = link;
-        this.platform = platform;
-        this.name = name;
-        this.activity = activity;
-    }
-
 }

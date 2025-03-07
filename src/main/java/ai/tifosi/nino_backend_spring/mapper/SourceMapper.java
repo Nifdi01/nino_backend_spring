@@ -10,7 +10,7 @@ public class SourceMapper {
                 source.getLink(),
                 PlatformMapper.toDto(source.getPlatform()),
                 source.getName(),
-                source.getActivity()
+                source.getFrequency()
         );
     }
 }

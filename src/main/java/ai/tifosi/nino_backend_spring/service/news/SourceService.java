@@ -36,7 +36,7 @@ public class SourceService {
                 source.getLink(),
                 new GetPlatformDto(source.getPlatform().getId(), source.getPlatform().getName(), source.getPlatform().getFrequency()),
                 source.getName(),
-                source.getActivity()
+                source.getFrequency()
         );
     }
 
@@ -48,7 +48,6 @@ public class SourceService {
     }
 
     public Source createSource(PostSourceDto request) {
-        System.out.println(request);
         Optional<Source> existingSource = sourceRepository.findByLink(request.link());
 
         if(existingSource.isPresent()){

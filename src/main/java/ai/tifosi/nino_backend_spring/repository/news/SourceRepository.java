@@ -13,4 +13,6 @@ public interface SourceRepository extends JpaRepository<Source, Long> {
     Page<Source> findByNameContaining(String search, Pageable pageable);
 
     Optional<Source> findByLink(String link);
+
+    Optional<Source> findTopByOrderByFrequencyDesc();
 }
