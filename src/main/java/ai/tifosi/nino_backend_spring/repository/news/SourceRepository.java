@@ -15,4 +15,6 @@ public interface SourceRepository extends JpaRepository<Source, Long> {
     Optional<Source> findByLink(String link);
 
     Optional<Source> findTopByOrderByFrequencyDesc();
+
+    Optional<Source> findTopByOrderByFrequency();
 }
