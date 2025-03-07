@@ -10,5 +10,4 @@ import java.util.Set;
 
 public record NewsDto(Long id, String title, String link, String content, GetSourceDto source, Set<GetKeywordDto> keywords,
                       LocalDateTime publishedAt, int viewed) implements Serializable {
-
 }
