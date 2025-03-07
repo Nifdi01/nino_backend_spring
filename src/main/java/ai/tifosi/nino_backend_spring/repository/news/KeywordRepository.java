@@ -24,4 +24,6 @@ public interface KeywordRepository extends JpaRepository<Keyword, Long> {
     void deleteKeywordRelationships(@Param("keywordId") Long keywordId);
 
     Optional<Keyword> findTopByOrderByFrequencyDesc();
+
+    Optional<Keyword> findTopByOrderByFrequency();
 }
