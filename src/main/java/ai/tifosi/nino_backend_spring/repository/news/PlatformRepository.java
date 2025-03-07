@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface PlatformRepository extends JpaRepository<Platform, Long> {
+    Optional<Platform> findTopByOrderByFrequency();
+
     Optional<Platform> findByName(String name);
 }
