@@ -1,4 +1,4 @@
 package ai.tifosi.nino_backend_spring.dto.statistics.visual;
 
-public record KeywordDashboard() {
+public record KeywordDashboard(String name, int value) {
 }

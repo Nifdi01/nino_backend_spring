@@ -1,6 +1,8 @@
 package ai.tifosi.nino_backend_spring.service.statistics;
 
+import ai.tifosi.nino_backend_spring.dto.statistics.visual.KeywordDashboard;
 import ai.tifosi.nino_backend_spring.dto.statistics.visual.SourceDashboard;
+import ai.tifosi.nino_backend_spring.model.news.Keyword;
 import ai.tifosi.nino_backend_spring.model.news.Source;
 import ai.tifosi.nino_backend_spring.repository.news.KeywordRepository;
 import ai.tifosi.nino_backend_spring.repository.news.NewsRepository;
@@ -25,5 +27,11 @@ public class VisualStatisticsService {
         List<Source> topFiveSources = sourceRepository.findTop5ByOrderByFrequencyDesc();
 
         return topFiveSources.stream().map(source -> new SourceDashboard(source.getName(), source.getFrequency())).toList();
+    }
+
+    public List<KeywordDashboard> getKeywordDashboard(){
+        List<Keyword> topFiveKeywords = keywordRepository.findTop5ByOrderByFrequencyDesc();
+
+        return topFiveKeywords.stream().map(keyword -> new KeywordDashboard(keyword.getName(), keyword.getFrequency())).toList();
     }
 }
