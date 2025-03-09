@@ -48,7 +48,7 @@ public class StatisticsService {
         long sourceCount = sourceRepository.count();
         Source mostFrequentSource = sourceRepository.findTopByOrderByFrequencyDesc().orElse(null);
         Source leastFrequentSource = sourceRepository.findTopByOrderByFrequency().orElse(null);
-        Platform mostFrequentPlatform = platformRepository.findTopByOrderByFrequency().orElse(null);
+        Platform mostFrequentPlatform = platformRepository.findTopByOrderByFrequencyDesc().orElse(null);
 
         return new SourceStatistics(
                 sourceCount,
@@ -62,7 +62,7 @@ public class StatisticsService {
         long newsCount = newsRepository.count();
         Source mostFrequentSource = sourceRepository.findTopByOrderByFrequencyDesc().orElse(null);
         Source leastFrequentSource = sourceRepository.findTopByOrderByFrequency().orElse(null);
-        Platform mostFrequentPlatform = platformRepository.findTopByOrderByFrequency().orElse(null);
+        Platform mostFrequentPlatform = platformRepository.findTopByOrderByFrequencyDesc().orElse(null);
 
         return new NewsStatistics(
                 newsCount,
