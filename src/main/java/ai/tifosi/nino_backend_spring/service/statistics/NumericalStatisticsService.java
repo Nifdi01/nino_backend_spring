@@ -1,12 +1,12 @@
-package ai.tifosi.nino_backend_spring.service.news;
+package ai.tifosi.nino_backend_spring.service.statistics;
 
 import ai.tifosi.nino_backend_spring.dto.news.keywordDto.KeywordDto;
 import ai.tifosi.nino_backend_spring.dto.news.platformDto.PlatformDto;
 import ai.tifosi.nino_backend_spring.dto.news.sourceDto.SourceDto;
-import ai.tifosi.nino_backend_spring.dto.statistics.KeywordStatistics;
-import ai.tifosi.nino_backend_spring.dto.statistics.NewsStatistics;
-import ai.tifosi.nino_backend_spring.dto.statistics.OverviewStatistics;
-import ai.tifosi.nino_backend_spring.dto.statistics.SourceStatistics;
+import ai.tifosi.nino_backend_spring.dto.statistics.numerical.KeywordStatistics;
+import ai.tifosi.nino_backend_spring.dto.statistics.numerical.NewsStatistics;
+import ai.tifosi.nino_backend_spring.dto.statistics.numerical.OverviewStatistics;
+import ai.tifosi.nino_backend_spring.dto.statistics.numerical.SourceStatistics;
 import ai.tifosi.nino_backend_spring.model.news.Keyword;
 import ai.tifosi.nino_backend_spring.model.news.Platform;
 import ai.tifosi.nino_backend_spring.model.news.Source;
@@ -17,13 +17,13 @@ import ai.tifosi.nino_backend_spring.repository.news.SourceRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StatisticsService {
+public class NumericalStatisticsService {
     private final SourceRepository sourceRepository;
     private final KeywordRepository keywordRepository;
     private final NewsRepository newsRepository;
     private final PlatformRepository platformRepository;
 
-    public StatisticsService(SourceRepository sourceRepository, KeywordRepository keywordRepository, NewsRepository newsRepository, PlatformRepository platformRepository) {
+    public NumericalStatisticsService(SourceRepository sourceRepository, KeywordRepository keywordRepository, NewsRepository newsRepository, PlatformRepository platformRepository) {
         this.sourceRepository = sourceRepository;
         this.keywordRepository = keywordRepository;
         this.newsRepository = newsRepository;

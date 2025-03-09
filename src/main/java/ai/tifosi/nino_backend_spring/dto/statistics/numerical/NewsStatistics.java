@@ -1,4 +1,4 @@
-package ai.tifosi.nino_backend_spring.dto.statistics;
+package ai.tifosi.nino_backend_spring.dto.statistics.numerical;
 
 
 import java.io.Serializable;
